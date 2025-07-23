@@ -1,4 +1,4 @@
-// Application Data
+
 const appData = {
   "samplePhotos": [
     {
@@ -19,20 +19,20 @@ const appData = {
       "comments": 12,
       "description": "Romantic pre-wedding session in scenic location"
     },
-    {
+    { 
       "id": "3",
       "title": "Wedding Reception Celebration",
       "category": "events",
-      "image": "https://images.unsplash.com/photo-1594736797933-d0c0167253fd?w=800", 
+      "image": "https://cdn.pixabay.com/photo/2020/12/09/12/38/glasses-5817358_1280.jpg", 
       "likes": 156,
       "comments": 6,
       "description": "Elegant wedding reception with stunning decorations"
     },
-    {
+    { 
       "id": "4",
       "title": "Bridal Portrait",
       "category": "wedding",
-      "image": "https://images.unsplash.com/photo-1621544402532-7cbca97e419b?w=800",
+      "image": "https://cdn.pixabay.com/photo/2021/04/12/08/19/bride-6171757_1280.jpg",
       "likes": 203,
       "comments": 15,
       "description": "Beautiful bridal portrait capturing traditional elegance"
@@ -46,11 +46,11 @@ const appData = {
       "comments": 9,
       "description": "Intricate mehendi ceremony with family celebrations"
     },
-    {
+    { 
       "id": "6",
       "title": "Couple's First Look",
       "category": "wedding",
-      "image": "https://images.unsplash.com/photo-1664735742503-6b4d75015cea?w=800",
+      "image": "https://cdn.pixabay.com/photo/2021/08/03/21/16/bride-6520538_1280.jpg",
       "likes": 245,
       "comments": 18,
       "description": "Emotional first look moment between bride and groom"
@@ -83,21 +83,21 @@ const appData = {
       "id": "t1",
       "type": "photo",
       "title": "Minimalist Wedding Decor Trends 2025",
-      "image": "https://images.unsplash.com/photo-1594736797933-d0c0167253fd?w=800",
+      "image": "https://cdn.pixabay.com/photo/2016/11/23/17/56/wedding-1854074_1280.jpg",
       "description": "Clean, elegant wedding setups are trending this year"
     },
     {
       "id": "t2", 
       "type": "photo",
       "title": "Traditional Meets Modern Bridal Look",
-      "image": "https://images.unsplash.com/photo-1621544402532-7cbca97e419b?w=800",
+      "image": "https://cdn.pixabay.com/photo/2020/05/22/07/46/model-5204225_1280.jpg",
       "description": "Contemporary styling with traditional Indian elements"
     },
     {
       "id": "t3",
       "type": "video",
       "title": "Drone Photography in Indian Weddings",
-      "image": "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800",
+      "Video": "data/BrideVideo.mp4",
       "description": "Aerial shots creating stunning wedding cinematography"
     }
   ],
@@ -521,19 +521,40 @@ function loadTrendingVideos() {
 function createTrendingElement(item) {
     const div = document.createElement('div');
     div.className = 'trending-item';
-    div.innerHTML = `
-        <img src="${item.image}" alt="${item.title}">
-        <div class="trending-item-content">
-            <h3>${item.title}</h3>
-            <p>${item.description}</p>
-            <div class="trending-meta">
-                <span class="trending-type">${item.type.toUpperCase()}</span>
-                <span class="trending-date">Trending Now</span>
+    
+    if (item.type === 'video') {
+        // Create video element with no controls, looping, and muted
+        div.innerHTML = `
+            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                <source src="${item.Video}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="trending-item-content">
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+                <div class="trending-meta">
+                    <span class="trending-type">${item.type.toUpperCase()}</span>
+                    <span class="trending-date">Trending Now</span>
+                </div>
             </div>
-        </div>
-    `;
+        `;
+    } else {
+        // Keep existing photo markup
+        div.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="trending-item-content">
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+                <div class="trending-meta">
+                    <span class="trending-type">${item.type.toUpperCase()}</span>
+                    <span class="trending-date">Trending Now</span>
+                </div>
+            </div>
+        `;
+    }
     return div;
 }
+
 
 function setupTrendingTabs() {
     const tabButtons = document.querySelectorAll('.trending-tabs .tab-btn');
