@@ -1,0 +1,200 @@
+{
+  "collections": {
+    "users": {
+      "description": "Admin authentication and user management",
+      "schema": {
+        "_id": "ObjectId",
+        "email": "String (unique)",
+        "password": "String (hashed with bcrypt)",
+        "role": "String (admin/user)",
+        "name": "String",
+        "created_at": "Date",
+        "last_login": "Date",
+        "is_active": "Boolean"
+      },
+      "indexes": [
+        "email",
+        "role"
+      ]
+    },
+    "photos": {
+      "description": "Photography portfolio images",
+      "schema": {
+        "_id": "ObjectId",
+        "title": "String",
+        "description": "String",
+        "image_url": "String (CDN URL)",
+        "thumbnail_url": "String (optimized thumbnail)",
+        "webp_url": "String (WebP format for performance)",
+        "alt_text": "String (accessibility)",
+        "category": "String (wedding/pre-wedding/events)",
+        "tags": "Array of Strings",
+        "metadata": {
+          "camera": "String",
+          "lens": "String",
+          "settings": "String",
+          "location": "String",
+          "date_taken": "Date"
+        },
+        "likes_count": "Number",
+        "views_count": "Number",
+        "featured": "Boolean",
+        "upload_date": "Date",
+        "is_active": "Boolean"
+      },
+      "indexes": [
+        "category",
+        "featured",
+        "upload_date",
+        "tags"
+      ]
+    },
+    "videos": {
+      "description": "Video portfolio content",
+      "schema": {
+        "_id": "ObjectId",
+        "title": "String",
+        "description": "String",
+        "video_url": "String (CDN URL)",
+        "thumbnail_url": "String",
+        "duration": "Number (seconds)",
+        "category": "String",
+        "tags": "Array of Strings",
+        "likes_count": "Number",
+        "views_count": "Number",
+        "featured": "Boolean",
+        "upload_date": "Date",
+        "is_active": "Boolean"
+      },
+      "indexes": [
+        "category",
+        "featured",
+        "upload_date"
+      ]
+    },
+    "likes": {
+      "description": "User interactions with photos/videos",
+      "schema": {
+        "_id": "ObjectId",
+        "user_id": "ObjectId (ref to users)",
+        "target_type": "String (photo/video)",
+        "target_id": "ObjectId (ref to photos/videos)",
+        "created_at": "Date"
+      },
+      "indexes": [
+        {
+          "target_type": 1,
+          "target_id": 1
+        },
+        {
+          "user_id": 1,
+          "target_type": 1,
+          "target_id": 1
+        }
+      ]
+    },
+    "comments": {
+      "description": "User comments on photos/videos",
+      "schema": {
+        "_id": "ObjectId",
+        "user_name": "String",
+        "user_email": "String",
+        "target_type": "String (photo/video)",
+        "target_id": "ObjectId",
+        "content": "String",
+        "likes_count": "Number",
+        "is_approved": "Boolean",
+        "created_at": "Date"
+      },
+      "indexes": [
+        {
+          "target_type": 1,
+          "target_id": 1,
+          "is_approved": 1
+        },
+        "created_at"
+      ]
+    },
+    "bookings": {
+      "description": "Client booking requests",
+      "schema": {
+        "_id": "ObjectId",
+        "client_info": {
+          "name": "String",
+          "email": "String",
+          "phone": "String",
+          "address": "String"
+        },
+        "event_details": {
+          "type": "String (wedding/pre-wedding/events)",
+          "date": "Date",
+          "venue": "String",
+          "guest_count": "Number",
+          "duration": "String"
+        },
+        "services": "Array of Strings",
+        "budget_range": "String",
+        "message": "String",
+        "status": "String (pending/confirmed/rejected/completed)",
+        "follow_up_emails_sent": "Array of Dates",
+        "created_at": "Date",
+        "updated_at": "Date"
+      },
+      "indexes": [
+        "status",
+        "event_details.date",
+        "created_at"
+      ]
+    },
+    "trending_content": {
+      "description": "Auto-updating trending wedding photography content",
+      "schema": {
+        "_id": "ObjectId",
+        "content_type": "String (photo/video)",
+        "title": "String",
+        "description": "String",
+        "image_url": "String",
+        "source_url": "String",
+        "category": "String",
+        "trending_score": "Number",
+        "last_updated": "Date",
+        "is_active": "Boolean"
+      },
+      "indexes": [
+        "trending_score",
+        "last_updated",
+        "category"
+      ]
+    },
+    "site_analytics": {
+      "description": "Site performance and user interaction tracking",
+      "schema": {
+        "_id": "ObjectId",
+        "page": "String",
+        "action": "String",
+        "user_ip": "String (hashed for privacy)",
+        "user_agent": "String",
+        "timestamp": "Date",
+        "session_id": "String"
+      },
+      "indexes": [
+        "page",
+        "timestamp"
+      ]
+    }
+  },
+  "relationships": {
+    "users_to_likes": "One-to-Many",
+    "photos_to_likes": "One-to-Many",
+    "videos_to_likes": "One-to-Many",
+    "photos_to_comments": "One-to-Many",
+    "videos_to_comments": "One-to-Many"
+  },
+  "performance_considerations": {
+    "image_optimization": "CDN with automatic WebP conversion and responsive sizes",
+    "caching": "Redis for session management and frequently accessed data",
+    "indexing": "Strategic compound indexes for query optimization",
+    "pagination": "Cursor-based pagination for large datasets",
+    "lazy_loading": "Implement for image galleries to improve initial load times"
+  }
+}

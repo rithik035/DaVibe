@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaVibe Photography - Indian Wedding Photography</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>DaVibe Photography</h1>
+                <span class="tagline">Capturing Love Stories</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#trending" class="nav-link">Trending Styles</a></li>
+                <li><a href="#booking" class="nav-link">Contact/Booking</a></li>
+            </ul>
+            <button class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-slideshow">
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200" alt="Royal Indian Wedding">
+                <div class="slide-content">
+                    <h2>Royal Indian Weddings</h2>
+                    <p>Capturing the grandeur of traditional celebrations</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200" alt="Pre-Wedding Romance">
+                <div class="slide-content">
+                    <h2>Pre-Wedding Romance</h2>
+                    <p>Love stories before the big day</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1594736797933-d0c0167253fd?w=1200" alt="Wedding Reception">
+                <div class="slide-content">
+                    <h2>Celebration Moments</h2>
+                    <p>Every smile, every dance, every joy</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>DaVibe Photography</h1>
+                <p>Award-winning Indian wedding photography that captures your most precious moments with artistic elegance and cultural authenticity.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn--primary" onclick="scrollToSection('portfolio')">View Portfolio</button>
+                    <button class="btn btn--outline" onclick="scrollToSection('booking')">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="slideshow-controls">
+            <button class="prev-slide"><i class="fas fa-chevron-left"></i></button>
+            <button class="next-slide"><i class="fas fa-chevron-right"></i></button>
+            <div class="slide-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Stories -->
+    <section class="featured-stories">
+        <div class="container">
+            <h2 class="section-title">Featured Wedding Stories</h2>
+            <div class="stories-grid" id="featuredStories">
+                <!-- Stories will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portfolio</h2>
+            
+            <div class="portfolio-tabs">
+                <button class="tab-btn active" data-tab="photos">Photos</button>
+                <button class="tab-btn" data-tab="videos">Videos</button>
+            </div>
+
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="wedding">Wedding</button>
+                <button class="filter-btn" data-filter="pre-wedding">Pre-Wedding</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+            </div>
+
+            <div class="portfolio-search">
+                <input type="text" id="portfolioSearch" placeholder="Search portfolio...">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <div class="portfolio-content">
+                <div id="photos-tab" class="tab-content active">
+                    <div class="masonry-grid" id="photoGallery">
+                        <!-- Photos will be loaded dynamically -->
+                    </div>
+                </div>
+                <div id="videos-tab" class="tab-content">
+                    <div class="video-grid" id="videoGallery">
+                        <!-- Videos will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Styles Section -->
+    <section id="trending" class="trending">
+        <div class="container">
+            <h2 class="section-title">Trending Indian Wedding Styles</h2>
+            <p class="section-subtitle">Discover the latest trends in Indian wedding photography</p>
+            
+            <div class="trending-tabs">
+                <button class="tab-btn active" data-tab="trending-photos">Trending Photos</button>
+                <button class="tab-btn" data-tab="trending-videos">Trending Videos</button>
+            </div>
+
+            <div class="trending-content">
+                <div id="trending-photos" class="tab-content active">
+                    <div class="trending-grid" id="trendingPhotosGrid">
+                        <!-- Trending photos will be loaded -->
+                    </div>
+                </div>
+                <div id="trending-videos" class="tab-content">
+                    <div class="trending-grid" id="trendingVideosGrid">
+                        <!-- Trending videos will be loaded -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="data/jatin.jpg" alt="Jatin Kumar - Photographer">
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">Meet Jatin Parjapt</h2>
+                    <p class="bio">Wedding photographer with over 5 years of experience capturing love stories across India. Specializing in Indian weddings, I blend traditional aesthetics with contemporary artistry to create timeless memories.</p>
+                    
+                    <div class="experience-stats">
+                        <div class="stat">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">over 100+</span>
+                            <span class="stat-label">Weddings Shot</span>
+                        </div>
+                        <!-- <div class="stat">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Awards Won</span>
+                        </div> -->
+                    </div>
+
+                    <!-- <div class="awards">
+                        <h3>Awards & Recognition</h3>
+                        <ul>
+                            <li>Wedding Photographer of the Year 2023</li>
+                            <li>Best Indian Wedding Photography 2022</li>
+                            <li>Creative Excellence Award 2021</li>
+                        </ul>
+                    </div> -->
+
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i> @da_vibe_photography</a>
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i> DaVibePhotography</a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i> DaVibeStudio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonials-carousel" id="testimonialsCarousel">
+                <!-- Testimonials will be loaded dynamically -->
+            </div>
+            <div class="testimonial-controls">
+                <button class="prev-testimonial"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-testimonial"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <div class="booking-content">
+                <div class="booking-info">
+                    <h2 class="section-title">Book Your Photography Session</h2>
+                    <p>Ready to capture your special moments? Fill out the form and we'll get back to you within 24 hours.</p>
+                    
+                    <div class="services-offered">
+                        <h3>Our Services</h3>
+                        <ul id="servicesList">
+                            <!-- Services will be loaded dynamically -->
+                        </ul>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Based in Mumbai, Available Pan-India</p>
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-envelope"></i> contact@davibephotography.com</p>
+                    </div>
+                </div>
+
+                <div class="booking-form-container">
+                    <form id="bookingForm" class="booking-form">
+                        <h3>Booking Details</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Client Details</label>
+                            <div class="form-row">
+                                <input type="text" name="firstName" class="form-control" placeholder="First Name" required>
+                                <input type="text" name="lastName" class="form-control" placeholder="Last Name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-row">
+                                <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                                <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Service Type</label>
+                            <select name="serviceType" class="form-control" required>
+                                <option value="">Select Service Type</option>
+                                <option value="wedding">Wedding Photography</option>
+                                <option value="pre-wedding">Pre-Wedding Shoot</option>
+                                <option value="events">Event Photography</option>
+                                <option value="reception">Reception Photography</option>
+                                <option value="engagement">Engagement Session</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Event Details</label>
+                            <div class="form-row">
+                                <input type="date" name="eventDate" class="form-control" required>
+                                <input type="text" name="venue" class="form-control" placeholder="Venue Location" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-row">
+                                <input type="number" name="guestCount" class="form-control" placeholder="Expected Guests" min="1">
+                                <select name="duration" class="form-control">
+                                    <option value="">Event Duration</option>
+                                    <option value="half-day">Half Day (4-6 hours)</option>
+                                    <option value="full-day">Full Day (8-10 hours)</option>
+                                    <option value="multi-day">Multi-Day Event</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Budget Range</label>
+                            <select name="budget" class="form-control">
+                                <option value="">Select Budget Range</option>
+                                <option value="50k-1L">₹50,000 - ₹1,00,000</option>
+                                <option value="1L-2L">₹1,00,000 - ₹2,00,000</option>
+                                <option value="2L-3L">₹2,00,000 - ₹3,00,000</option>
+                                <option value="3L+">₹3,00,000+</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Additional Details</label>
+                            <textarea name="message" class="form-control" placeholder="Tell us about your vision, special requirements, or any questions..." rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--full-width btn-booking ">
+                            <i class="fas fa-calendar-check"></i> Submit Booking Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+                <div class="lightbox-actions">
+                    <button class="like-btn" id="lightbox-like">
+                        <i class="far fa-heart"></i> <span class="like-count">0</span>
+                    </button>
+                    <button class="comment-btn" onclick="toggleComments()">
+                        <i class="far fa-comment"></i> Comments
+                    </button>
+                    <button class="share-btn" onclick="shareImage()">
+                        <i class="fas fa-share"></i> Share
+                    </button>
+                </div>
+                <div class="comments-section" id="commentsSection">
+                    <div class="add-comment">
+                        <input type="text" id="commentName" placeholder="Your name">
+                        <input type="email" id="commentEmail" placeholder="Your email">
+                        <textarea id="commentText" placeholder="Write a comment..."></textarea>
+                        <button onclick="addComment()">Post Comment</button>
+                    </div>
+                    <div class="comments-list" id="commentsList">
+                        <!-- Comments will be loaded here -->
+                    </div>
+                </div>
+            </div>
+            <div class="lightbox-nav">
+                <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Admin Login</h2>
+            <form id="adminLogin">
+                <div class="form-group">
+                    <input type="text" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn--primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="success-content">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2>Booking Request Sent!</h2>
+                <p>Thank you for choosing DaVibe Photography. We'll review your request and get back to you within 24 hours.</p>
+                <button class="btn btn--primary" onclick="closeModal('successModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Access Button (Hidden) -->
+    <div class="admin-access" onclick="openModal('adminModal')">
+        <i class="fas fa-cog"></i>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
